@@ -1,11 +1,12 @@
 "use client";
 import {
   ArrowRight,
+  Award,
   GitBranch,
   Link2,
   Mail,
-  Phone,
   MapPin,
+  Phone,
   Sparkles,
   Star,
 } from "lucide-react";
@@ -143,78 +144,126 @@ export default function Hero() {
             className="lg:col-span-5 space-y-4"
             style={{ animation: "fadeSlideIn 0.7s ease-out 0.5s both" }}
           >
-            {/* Profile card */}
-            <div className="relative rounded-3xl glass p-8 glow-violet overflow-hidden">
-              <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-violet-500/10 blur-3xl" />
-              <div className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-indigo-500/10 blur-3xl" />
+            {/* 3-D flip wrapper — perspective lives here */}
+            <div style={{ perspective: "1200px" }}>
+              {/* Inner card — this is what rotates */}
+              <div
+                style={{
+                  position: "relative",
+                  transformStyle: "preserve-3d",
+                  animation: "cardFlip 2s ease-in-out infinite",
+                  borderRadius: "1.5rem",
+                }}
+              >
+                {/* ── FRONT FACE ── */}
+                <div
+                  className="relative rounded-3xl glass p-8 glow-violet overflow-hidden"
+                  style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+                >
+                  <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-violet-500/10 blur-3xl" />
+                  <div className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-indigo-500/10 blur-3xl" />
 
-              <div className="relative z-10">
-                {/* Avatar */}
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="relative">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500 via-indigo-500 to-purple-600 flex items-center justify-center text-2xl font-black text-white shadow-lg">
-                      AK
+                  <div className="relative z-10">
+                    {/* Avatar */}
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="relative">
+                        <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500 via-indigo-500 to-purple-600 flex items-center justify-center text-2xl font-black text-white shadow-lg">
+                          AK
+                        </div>
+                        <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-green-500 border-2 border-zinc-950" />
+                      </div>
+                      <div>
+                        <h2 className="text-white font-bold text-lg leading-tight">Amrita Kumari</h2>
+                        <p className="text-zinc-400 text-sm">Full Stack &amp; AI Engineer</p>
+                        <div className="flex items-center gap-1 mt-1">
+                          {[1, 2, 3, 4, 5].map((i) => (
+                            <Star key={i} className="w-3 h-3 text-amber-400 fill-amber-400" />
+                          ))}
+                          <Award className="w-3.5 h-3.5 text-amber-400 ml-1" />
+                          <span className="text-zinc-500 text-xs ml-0.5">Award Winner</span>
+                        </div>
+                      </div>
                     </div>
-                    <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-green-500 border-2 border-zinc-950" />
-                  </div>
-                  <div>
-                    <h2 className="text-white font-bold text-lg leading-tight">Amrita Kumari</h2>
-                    <p className="text-zinc-400 text-sm">Full Stack &amp; AI Engineer</p>
-                    <div className="flex items-center gap-1 mt-1">
-                      {[1, 2, 3, 4, 5].map((i) => (
-                        <Star key={i} className="w-3 h-3 text-amber-400 fill-amber-400" />
+
+                    {/* Stats grid */}
+                    <div className="grid grid-cols-3 gap-3 mb-6">
+                      {[
+                        { value: "3+", label: "Projects" },
+                        { value: "4+", label: "Certs" },
+                        { value: "9.08", label: "GPA" },
+                      ].map(({ value, label }) => (
+                        <div key={label} className="rounded-2xl bg-white/5 border border-white/8 p-3 text-center">
+                          <div className="text-xl font-black text-white">{value}</div>
+                          <div className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium">{label}</div>
+                        </div>
                       ))}
-                      <span className="text-zinc-500 text-xs ml-1">Award Winner</span>
+                    </div>
+
+                    {/* Skill bars */}
+                    <div className="space-y-3">
+                      {[
+                        { label: "React.js / React Native", pct: 90 },
+                        { label: "Python / Flask / APIs", pct: 85 },
+                        { label: "AI/ML & Generative AI", pct: 80 },
+                      ].map(({ label, pct }) => (
+                        <div key={label}>
+                          <div className="flex justify-between text-xs mb-1">
+                            <span className="text-zinc-400">{label}</span>
+                            <span className="text-white font-medium">{pct}%</span>
+                          </div>
+                          <div className="h-1.5 rounded-full bg-zinc-800 overflow-hidden">
+                            <div
+                              className="h-full rounded-full bg-gradient-to-r from-violet-500 to-indigo-400"
+                              style={{ width: `${pct}%` }}
+                            />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Tags */}
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {["React.js", "Python", "Flask", "AI/ML", "React Native", "AWS"].map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/8 text-zinc-400 text-[10px] font-medium tracking-wide"
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
 
-                {/* Stats grid */}
-                <div className="grid grid-cols-3 gap-3 mb-6">
-                  {[
-                    { value: "3+", label: "Projects" },
-                    { value: "4+", label: "Certs" },
-                    { value: "9.08", label: "GPA" },
-                  ].map(({ value, label }) => (
-                    <div key={label} className="rounded-2xl bg-white/5 border border-white/8 p-3 text-center">
-                      <div className="text-xl font-black text-white">{value}</div>
-                      <div className="text-[10px] text-zinc-500 uppercase tracking-wider font-medium">{label}</div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Skill bars */}
-                <div className="space-y-3">
-                  {[
-                    { label: "React.js / React Native", pct: 90 },
-                    { label: "Python / Flask / APIs", pct: 85 },
-                    { label: "AI/ML & Generative AI", pct: 80 },
-                  ].map(({ label, pct }) => (
-                    <div key={label}>
-                      <div className="flex justify-between text-xs mb-1">
-                        <span className="text-zinc-400">{label}</span>
-                        <span className="text-white font-medium">{pct}%</span>
-                      </div>
-                      <div className="h-1.5 rounded-full bg-zinc-800 overflow-hidden">
-                        <div
-                          className="h-full rounded-full bg-gradient-to-r from-violet-500 to-indigo-400"
-                          style={{ width: `${pct}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Tags */}
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {["React.js", "Python", "Flask", "AI/ML", "React Native", "AWS"].map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 rounded-lg bg-white/5 border border-white/8 text-zinc-400 text-[10px] font-medium tracking-wide"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                {/* ── BACK FACE ── */}
+                <div
+                  className="absolute inset-0 rounded-3xl glass glow-violet overflow-hidden"
+                  style={{
+                    backfaceVisibility: "hidden",
+                    WebkitBackfaceVisibility: "hidden",
+                    transform: "rotateY(180deg)",
+                  }}
+                >
+                  {/* Ambient blobs mirroring front */}
+                  <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-violet-500/10 blur-3xl" />
+                  <div className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-indigo-500/10 blur-3xl" />
+                  {/* Full-card profile picture */}
+                  <img
+                    src="/profile.jpg"
+                    alt="Amrita Kumari"
+                    className="w-full h-full object-cover rounded-3xl"
+                    style={{ display: "block" }}
+                  />
+                  {/* Subtle name overlay at the bottom */}
+                  <div
+                    className="absolute bottom-0 left-0 right-0 px-6 py-5 rounded-b-3xl"
+                    style={{
+                      background: "linear-gradient(to top, rgba(9,9,11,0.85) 0%, transparent 100%)",
+                    }}
+                  >
+                    <p className="text-white font-bold text-lg leading-tight">Amrita Kumari</p>
+                    <p className="text-zinc-400 text-sm">Full Stack &amp; AI Engineer</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -273,6 +322,13 @@ export default function Hero() {
         @keyframes marquee {
           from { transform: translateX(0); }
           to   { transform: translateX(-50%); }
+        }
+        @keyframes cardFlip {
+          0%   { transform: rotateY(0deg); }
+          45%  { transform: rotateY(0deg); }
+          50%  { transform: rotateY(180deg); }
+          95%  { transform: rotateY(180deg); }
+          100% { transform: rotateY(360deg); }
         }
       `}</style>
     </section>
