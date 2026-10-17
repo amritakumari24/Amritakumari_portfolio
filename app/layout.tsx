@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: "Amrita Kumari — Full Stack & AI Engineer",
   description:
     "Portfolio of Amrita Kumari — Software & AI Engineer specializing in React Native, React.js, Python, Flask, REST APIs, and Generative AI.",
@@ -12,7 +13,10 @@ export const metadata: Metadata = {
     title: "Amrita Kumari — Full Stack & AI Engineer",
     description: "Software & AI Engineer with hands-on experience in React Native, React.js, Python, Flask, REST APIs, and modern AI/ML.",
     type: "website",
+    url: "/",
+    images: [{ url: "/profile.jpg", alt: "Amrita Kumari" }],
   },
+  alternates: { canonical: "/" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

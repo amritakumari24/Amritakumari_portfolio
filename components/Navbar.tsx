@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
-import { Menu, X, Code2, Sun, Moon } from "lucide-react";
+import { Menu, X, Code2 } from "lucide-react";
 
 const NAV_LINKS = [
   { label: "About",          href: "#about" },
@@ -16,18 +15,11 @@ export default function Navbar() {
   const [scrolled, setScrolled]   = useState(false);
   const [menuOpen, setMenuOpen]   = useState(false);
   const [active, setActive]       = useState("");
-  const [mounted, setMounted]     = useState(false);
-  const { theme, setTheme }       = useTheme();
-
-  useEffect(() => { setMounted(true); }, []);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const isDark = theme === "dark";
-  const toggleTheme = () => setTheme(isDark ? "light" : "dark");
 
   return (
     <header
@@ -76,34 +68,6 @@ export default function Navbar() {
 
           {/* Right controls */}
           <div className="flex items-center gap-2">
-            {/* ── Theme Toggle ── */}
-            {mounted && (
-              <button
-                id="theme-toggle"
-                onClick={toggleTheme}
-                aria-label="Toggle theme"
-                className="relative w-9 h-9 rounded-xl flex items-center justify-center transition-all hover:scale-110 active:scale-95"
-                style={{
-                  background: "var(--bg-card)",
-                  border: "1px solid var(--border)",
-                  color: "var(--text-secondary)",
-                }}
-              >
-                <span
-                  className="absolute inset-0 flex items-center justify-center transition-all duration-300"
-                  style={{ opacity: isDark ? 1 : 0, transform: isDark ? "rotate(0deg) scale(1)" : "rotate(90deg) scale(0)" }}
-                >
-                  <Moon className="w-4 h-4 text-violet-400" />
-                </span>
-                <span
-                  className="absolute inset-0 flex items-center justify-center transition-all duration-300"
-                  style={{ opacity: isDark ? 0 : 1, transform: isDark ? "rotate(-90deg) scale(0)" : "rotate(0deg) scale(1)" }}
-                >
-                  <Sun className="w-4 h-4 text-amber-500" />
-                </span>
-              </button>
-            )}
-
             {/* Hire Me */}
             <a
               href="mailto:amritakumari24@navgurukul.org"

@@ -1,5 +1,5 @@
 "use client";
-import { ArrowUpRight, GitBranch, ExternalLink, Calendar } from "lucide-react";
+import { ArrowUpRight, GitBranch, ExternalLink } from "lucide-react";
 
 const PROJECTS = [
   {
@@ -10,7 +10,7 @@ const PROJECTS = [
     tech: ["Python", "Flask", "Express.js", "JWT", "REST APIs", "DSA", "MongoDB"],
     color: "from-violet-600 to-indigo-600",
     glow: "rgba(139,92,246,0.12)",
-    link: "#",
+    link: undefined,
     github: "https://github.com/amritakumari24/LeaveManagementSystem",
     featured: true,
   },
@@ -22,7 +22,7 @@ const PROJECTS = [
     tech: ["React.js", "Lazy Loading", "State Management", "REST APIs", "Client-side Caching"],
     color: "from-emerald-500 to-teal-600",
     glow: "rgba(16,185,129,0.10)",
-    link: "#",
+    link: undefined,
     github: "https://github.com/amritakumari24/healthcareportal",
     featured: true,
   },
@@ -125,17 +125,19 @@ export default function Projects() {
 
                   {/* Right: action buttons */}
                   <div className="lg:col-span-4 flex flex-col gap-3">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      id={`project-live-${idx}`}
-                      className={`group/btn flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r ${project.color} text-white font-semibold text-sm transition-all hover:scale-[1.03] active:scale-[0.97] shadow-lg`}
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      Live Demo
-                      <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                    </a>
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        id={`project-live-${idx}`}
+                        className={`group/btn flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r ${project.color} text-white font-semibold text-sm transition-all hover:scale-[1.03] active:scale-[0.97] shadow-lg`}
+                      >
+                        <ExternalLink className="w-4 h-4" />
+                        Live Demo
+                        <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                      </a>
+                    )}
                     <a
                       href={project.github}
                       target="_blank"
