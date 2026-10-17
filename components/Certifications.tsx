@@ -114,6 +114,7 @@ export default function Certifications() {
               alt="Certificate"
               width={800}
               height={800}
+              unoptimized
               className="w-full h-auto rounded-2xl shadow-2xl object-contain"
             />
           </div>
@@ -143,13 +144,14 @@ export default function Certifications() {
               style={{ transitionDelay: `${idx * 70}ms` }}
               onClick={() => setLightbox(cert.img)}
             >
-              {/* Certificate image */}
-              <div className="relative w-full aspect-square overflow-hidden">
+              {/* Framed certificate preview */}
+              <div className="relative w-full aspect-[4/3] overflow-hidden bg-zinc-100 p-3 sm:p-4">
                 <Image
                   src={cert.img}
                   alt={cert.title}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  unoptimized
+                  className="object-contain p-3 sm:p-4 group-hover:scale-[1.02] transition-transform duration-500"
                 />
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">

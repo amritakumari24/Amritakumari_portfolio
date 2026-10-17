@@ -1,10 +1,10 @@
 "use client";
-import { ArrowUpRight, GitBranch, ExternalLink } from "lucide-react";
+import { ArrowUpRight, Bot, Building2, ExternalLink, GitBranch, HeartPulse } from "lucide-react";
 
 const PROJECTS = [
   {
     title: "AI-Assisted Leave Management System",
-    emoji: "🏢",
+    icon: Building2,
     description:
       "Developed RESTful backend APIs using Python/Flask and Express.js, implementing custom DSA logic for evaluation accuracy and automated processing. Validated database operations and secure JWT authentication while maintaining structured documentation for deployment.",
     tech: ["Python", "Flask", "Express.js", "JWT", "REST APIs", "DSA", "MongoDB"],
@@ -16,7 +16,7 @@ const PROJECTS = [
   },
   {
     title: "Healthcare Appointment & Records Portal",
-    emoji: "🏥",
+    icon: HeartPulse,
     description:
       "Built responsive patient routing and lazy-loading components designed for efficient client-side data handling and caching. Managed cross-component application state to eliminate data mismatches during core booking workflows.",
     tech: ["React.js", "Lazy Loading", "State Management", "REST APIs", "Client-side Caching"],
@@ -28,7 +28,7 @@ const PROJECTS = [
   },
   {
     title: "KidChatBot — AI Learning Assistant",
-    emoji: "🤖",
+    icon: Bot,
     description:
       "Developed KidChatBot, a child-friendly AI learning assistant using React, Vite, FastAPI, and the Groq API to deliver short, age-appropriate answers with Markdown rendering. Implemented voice interaction using the Web Speech API — speech recognition, text-to-speech, pause/stop controls, and animated bunny responses. Built a responsive UI with light/dark themes, browser-persisted chat history, question tracking, a 20-question conversation limit, and accessible focus states.",
     tech: ["React", "Vite", "FastAPI", "Groq API", "Web Speech API", "Markdown", "AI/ML"],
@@ -84,7 +84,9 @@ export default function Projects() {
                   <div className="lg:col-span-8">
                     {/* Title row */}
                     <div className="flex flex-wrap items-start gap-3 mb-4">
-                      <span className="text-4xl">{project.emoji}</span>
+                      <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${project.color} shadow-lg`}>
+                        <project.icon className="h-5 w-5 text-white" aria-hidden="true" />
+                      </div>
                       <div>
                         <div className="flex items-center gap-3 flex-wrap">
                           <h3 className="text-xl md:text-2xl font-black text-white">

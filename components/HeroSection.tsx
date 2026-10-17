@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import {
   ArrowRight,
   Award,
@@ -151,7 +152,7 @@ export default function Hero() {
                 style={{
                   position: "relative",
                   transformStyle: "preserve-3d",
-                  animation: "cardFlip 2s ease-in-out infinite",
+                  animation: "cardFlip 10s ease-in-out infinite",
                   borderRadius: "1.5rem",
                 }}
               >
@@ -248,11 +249,13 @@ export default function Hero() {
                   <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-violet-500/10 blur-3xl" />
                   <div className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-indigo-500/10 blur-3xl" />
                   {/* Full-card profile picture */}
-                  <img
+                  <Image
                     src="/profile.jpg"
                     alt="Amrita Kumari"
-                    className="w-full h-full object-cover rounded-3xl"
-                    style={{ display: "block" }}
+                    fill
+                    sizes="(min-width: 1024px) 42vw, 100vw"
+                    className="object-cover rounded-3xl"
+                    priority
                   />
                   {/* Subtle name overlay at the bottom */}
                   <div
