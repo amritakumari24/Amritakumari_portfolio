@@ -1,11 +1,10 @@
 import React from "react";
-import { 
-  ArrowRight, 
-  Play, 
-  Target, 
-  Crown, 
+import {
+  ArrowRight,
+  Play,
+  Target,
+  Crown,
   Star,
-  // Brand Icons
   Hexagon,
   Triangle,
   Command,
@@ -14,15 +13,14 @@ import {
   Cpu
 } from "lucide-react";
 
-// --- MOCK BRANDS ---
-// Replaced PNGs with Lucide icons to simulate tech logos
-const CLIENTS = [
-  { name: "Acme Corp", icon: Hexagon },
-  { name: "Quantum", icon: Triangle },
-  { name: "Command+Z", icon: Command },
-  { name: "Phantom", icon: Ghost },
-  { name: "Ruby", icon: Gem },
-  { name: "Chipset", icon: Cpu },
+// --- TECH ECOSYSTEM (replacing generic brands with relevant tech) ---
+const TECH_ECOSYSTEM = [
+  { name: "React.js", icon: Hexagon },
+  { name: "Python", icon: Triangle },
+  { name: "Claude AI", icon: Command },
+  { name: "FastAPI", icon: Ghost },
+  { name: "MongoDB", icon: Gem },
+  { name: "AWS", icon: Cpu },
 ];
 
 // --- SUB-COMPONENTS ---
@@ -37,9 +35,6 @@ const StatItem = ({ value, label }: { value: string; label: string }) => (
 export default function HeroSection() {
   return (
     <div className="relative w-full bg-zinc-950 text-white overflow-hidden font-sans">
-      {/* 
-        SCOPED ANIMATIONS 
-      */}
       <style>{`
         @keyframes fadeSlideIn {
           from { opacity: 0; transform: translateY(20px); }
@@ -54,7 +49,7 @@ export default function HeroSection() {
           opacity: 0;
         }
         .animate-marquee {
-          animation: marquee 40s linear infinite; /* Slower for readability */
+          animation: marquee 40s linear infinite;
         }
         .delay-100 { animation-delay: 0.1s; }
         .delay-200 { animation-delay: 0.2s; }
@@ -64,71 +59,75 @@ export default function HeroSection() {
       `}</style>
 
       {/* Background Image with Gradient Mask */}
-      <div 
-        className="absolute inset-0 z-0 bg-[url(https://cdn.21st.dev/assets/mirror/e2/e2d2c513457ef62bb85c6738b58f7155af95e4eca2512069220949168413635f.webp)] bg-cover bg-center opacity-40"
+      <div
+        className="absolute inset-0 z-0 bg-[url(https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&q=80)] bg-cover bg-center opacity-20"
         style={{
           maskImage: "linear-gradient(180deg, transparent, black 0%, black 70%, transparent)",
           WebkitMaskImage: "linear-gradient(180deg, transparent, black 0%, black 70%, transparent)",
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-24 pb-12 sm:px-6 md:pt-32 md:pb-20 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-16 pb-12 sm:px-6 md:pt-24 md:pb-20 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8 items-start">
-          
+
           {/* --- LEFT COLUMN --- */}
           <div className="lg:col-span-7 flex flex-col justify-center space-y-8 pt-8">
-            
+
             {/* Badge */}
             <div className="animate-fade-in delay-100">
               <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 backdrop-blur-md transition-colors hover:bg-white/10">
                 <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-zinc-300 flex items-center gap-2">
-                  Award-Winning Design
+                  Excellence Award — Eternal University 2025
                   <Star className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
                 </span>
               </div>
             </div>
 
             {/* Heading */}
-            <h1 
+            <h2
               className="animate-fade-in delay-200 text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-medium tracking-tighter leading-[0.9]"
               style={{
                 maskImage: "linear-gradient(180deg, black 0%, black 80%, transparent 100%)",
                 WebkitMaskImage: "linear-gradient(180deg, black 0%, black 80%, transparent 100%)"
               }}
             >
-              Crafting Digital<br />
+              Building AI-First<br />
               <span className="bg-gradient-to-br from-white via-white to-[#ffcd75] bg-clip-text text-transparent">
-                Experiences
+                Software
               </span><br />
-              That Matter
-            </h1>
+              That Scales
+            </h2>
 
             {/* Description */}
             <p className="animate-fade-in delay-300 max-w-xl text-lg text-zinc-400 leading-relaxed">
-              We design interfaces that combine beauty with functionality,
-              creating seamless experiences that users love and businesses thrive on.
+              From child-friendly AI chatbots to healthcare portals and leave management systems — I build reliable, scalable software with a focus on real-world impact.
             </p>
 
             {/* CTA Buttons */}
             <div className="animate-fade-in delay-400 flex flex-col sm:flex-row gap-4">
-              <button className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-semibold text-zinc-950 transition-all hover:scale-[1.02] hover:bg-zinc-200 active:scale-[0.98]">
-                View Portfolio
+              <a
+                href="#projects"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-semibold text-zinc-950 transition-all hover:scale-[1.02] hover:bg-zinc-200 active:scale-[0.98]"
+              >
+                View Projects
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </button>
-              
-              <button className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-4 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10 hover:border-white/20">
+              </a>
+
+              <a
+                href="#contact"
+                className="group inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-4 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10 hover:border-white/20"
+              >
                 <Play className="w-4 h-4 fill-current" />
-                Watch Showreel
-              </button>
+                Get In Touch
+              </a>
             </div>
           </div>
 
           {/* --- RIGHT COLUMN --- */}
           <div className="lg:col-span-5 space-y-6 lg:mt-12">
-            
+
             {/* Stats Card */}
             <div className="animate-fade-in delay-500 relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl shadow-2xl">
-              {/* Card Glow Effect */}
               <div className="absolute top-0 right-0 -mr-16 -mt-16 h-64 w-64 rounded-full bg-white/5 blur-3xl pointer-events-none" />
 
               <div className="relative z-10">
@@ -137,19 +136,19 @@ export default function HeroSection() {
                     <Target className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <div className="text-3xl font-bold tracking-tight text-white">150+</div>
-                    <div className="text-sm text-zinc-400">Projects Delivered</div>
+                    <div className="text-3xl font-bold tracking-tight text-white">3+</div>
+                    <div className="text-sm text-zinc-400">Projects Shipped</div>
                   </div>
                 </div>
 
                 {/* Progress Bar Section */}
                 <div className="space-y-3 mb-8">
                   <div className="flex justify-between text-sm">
-                    <span className="text-zinc-400">Client Satisfaction</span>
-                    <span className="text-white font-medium">98%</span>
+                    <span className="text-zinc-400">Academic Performance</span>
+                    <span className="text-white font-medium">9.08 GPA</span>
                   </div>
                   <div className="h-2 w-full overflow-hidden rounded-full bg-zinc-800/50">
-                    <div className="h-full w-[98%] rounded-full bg-gradient-to-r from-white to-zinc-400" />
+                    <div className="h-full w-[90%] rounded-full bg-gradient-to-r from-white to-zinc-400" />
                   </div>
                 </div>
 
@@ -157,11 +156,11 @@ export default function HeroSection() {
 
                 {/* Mini Stats Grid */}
                 <div className="grid grid-cols-3 gap-4 text-center">
-                  <StatItem value="5+" label="Years" />
+                  <StatItem value="4+" label="Certs" />
                   <div className="w-px h-full bg-white/10 mx-auto" />
-                  <StatItem value="24/7" label="Support" />
+                  <StatItem value="BCA" label="Degree" />
                   <div className="w-px h-full bg-white/10 mx-auto" />
-                  <StatItem value="100%" label="Quality" />
+                  <StatItem value="AI" label="Focus" />
                 </div>
 
                 {/* Tag Pills */}
@@ -171,21 +170,21 @@ export default function HeroSection() {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                     </span>
-                    ACTIVE
+                    OPEN TO WORK
                   </div>
                   <div className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-medium tracking-wide text-zinc-300">
                     <Crown className="w-3 h-3 text-yellow-500" />
-                    PREMIUM
+                    AWARD WINNER
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Marquee Card */}
+            {/* Marquee Card — Tech stack */}
             <div className="animate-fade-in delay-500 relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 py-8 backdrop-blur-xl">
-              <h3 className="mb-6 px-8 text-sm font-medium text-zinc-400">Trusted by Industry Leaders</h3>
-              
-              <div 
+              <h3 className="mb-6 px-8 text-sm font-medium text-zinc-400">Tech stack I use daily</h3>
+
+              <div
                 className="relative flex overflow-hidden"
                 style={{
                   maskImage: "linear-gradient(to right, transparent, black 20%, black 80%, transparent)",
@@ -193,17 +192,14 @@ export default function HeroSection() {
                 }}
               >
                 <div className="animate-marquee flex gap-12 whitespace-nowrap px-4">
-                  {/* Triple list for seamless loop */}
-                  {[...CLIENTS, ...CLIENTS, ...CLIENTS].map((client, i) => (
-                    <div 
+                  {[...TECH_ECOSYSTEM, ...TECH_ECOSYSTEM, ...TECH_ECOSYSTEM].map((tech, i) => (
+                    <div
                       key={i}
                       className="flex items-center gap-2 opacity-50 transition-all hover:opacity-100 hover:scale-105 cursor-default grayscale hover:grayscale-0"
                     >
-                      {/* Brand Icon */}
-                      <client.icon className="h-6 w-6 text-white fill-current" />
-                      {/* Brand Name */}
+                      <tech.icon className="h-6 w-6 text-white fill-current" />
                       <span className="text-lg font-bold text-white tracking-tight">
-                        {client.name}
+                        {tech.name}
                       </span>
                     </div>
                   ))}
